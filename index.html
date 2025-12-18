@@ -4,11 +4,30 @@
     <meta charset="UTF-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="ie=edge" http-equiv="X-UA-Compatible" />
+    <meta content="Galeria de arte TripleTen" name="description" >
+    <meta content="Alejandra Toro Arcila" name="author" >
+    <meta content="html, css, javascript" name="keywords" >
     <title>Around The U.S.</title>
     <link href="./pages/index.css" rel="stylesheet" />
   </head>
-  <body class="page">
+  <body>
     <div class="page__content">
+      <div class="popup">
+        <button type="button" class="popup__button popup__button_close">
+          ×</button>
+          <form action class="popup__container">
+          <h2 class="popup__subtitle">Editar perfil</h2>
+          <fieldset class="popup__content">
+            <input type="text" class="popup__input popup__input_name" placeholder="Nombre">
+            <input type="text" class="popup__input popup__input_about" placeholder="Acerca de mi">
+          </fieldset>
+          <fieldset class="popup__content">
+            <button type="submit" class="popup__button popup__button_save">
+              Guardar
+            </button>
+          </fieldset>
+        </form>
+      </div>
       <header class="header page__section">
         <img
           alt="Logotipo Around The U.S."
@@ -18,15 +37,15 @@
       </header>
       <main class="content">
         <section class="profile page__section">
-          <img class="profile__image" src="./images/avatar.jpg" alt="Avatar" />
+          <img class="profile__image" src="./images/me.jpg" alt="Avatar" />
           <div class="profile__info">
-            <h1 class="profile__title">Jacques Cousteau</h1>
+            <h1 class="profile__title">Alejandra Toro Arcila</h1>
             <button
               aria-label="Editar perfil"
               class="profile__edit-button"
               type="button"
             ></button>
-            <p class="profile__description">Explorador</p>
+            <p class="profile__description">Estudiante</p>
           </div>
           <button
             aria-label="Agregar tarjeta"
@@ -162,69 +181,7 @@
       <footer class="footer page__section">
         <p class="footer__copyright">© 2025 Around The U.S.</p>
       </footer>
-      <div class="popup" id="edit-popup">
-        <div class="popup__content">
-          <button
-            aria-label="Cerrar ventana emergente"
-            class="popup__close"
-            type="button"
-          ></button>
-          <h3 class="popup__title">Editar perfil</h3>
-          <form class="popup__form" id="edit-profile-form">
-            <input
-              class="popup__input popup__input_type_name"
-              name="name"
-              placeholder="Nombre"
-              type="text"
-            />
-            <input
-              class="popup__input popup__input_type_description"
-              name="description"
-              placeholder="Acerca de mí"
-              type="text"
-            />
-            <button class="button popup__button" type="submit">Guardar</button>
-          </form>
-        </div>
-      </div>
-      <div class="popup" id="new-card-popup">
-        <div class="popup__content">
-          <button
-            aria-label="Cerrar ventana emergente"
-            class="popup__close"
-            type="button"
-          ></button>
-          <h3 class="popup__title">Nuevo lugar</h3>
-          <form class="popup__form" id="new-card-form">
-            <input
-              class="popup__input popup__input_type_card-name"
-              name="place-name"
-              placeholder="Título"
-              required
-              type="text"
-            />
-            <input
-              class="popup__input popup__input_type_url"
-              name="link"
-              placeholder="Enlace a la imagen"
-              required
-              type="url"
-            />
-            <button class="button popup__button" type="submit">Crear</button>
-          </form>
-        </div>
-      </div>
-      <div class="popup" id="image-popup">
-        <div class="popup__content popup__content_content_image">
-          <button
-            aria-label="Cerrar ventana emergente"
-            class="popup__close"
-            type="button"
-          ></button>
-          <img alt="" class="popup__image" src="#" />
-          <p class="popup__caption"></p>
-        </div>
-      </div>
     </div>
+    <script src="./script/script.js"></script>
   </body>
 </html>
