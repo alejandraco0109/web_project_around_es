@@ -1,187 +1,78 @@
 <!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta content="ie=edge" http-equiv="X-UA-Compatible" />
-    <meta content="Galeria de arte TripleTen" name="description" >
-    <meta content="Alejandra Toro Arcila" name="author" >
-    <meta content="html, css, javascript" name="keywords" >
-    <title>Around The U.S.</title>
-    <link href="./pages/index.css" rel="stylesheet" />
-  </head>
+<html lang="es"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Alrededor de los EE.UU.">
+    <meta name="author" content="Alejandra Toro Arcila">
+    <meta name="keywords" content="html, css, javascript">
+    <title>Alrededor de los EE.UU.</title>
+    <link rel="stylesheet" href="./pages/index.css">
+</head>
   <body>
     <div class="page">
       <div class="popup">
         <button type="button" class="popup__button popup__button_close">
-          ×</button>
-          <form action class="popup__container">
-          <h2 class="popup__subtitle">Editar perfil</h2>
+          🞩
+        </button>
+        <div class="popup__images">
+          <div class="popup__content-image">
+            <img class="popup__image" src="#" alt="">
+          </div>
+          <div class="popup__paragraph-content">
+            <p class="popup__paragraph"></p>
+          </div>
+        </div>
+        <form action="#" class="popup__container">
+          <h2 class="popup__subtitle">h</h2>
           <fieldset class="popup__content">
-            <input type="text" class="popup__input popup__input_name" placeholder="Nombre">
-            <input type="text" class="popup__input popup__input_about" placeholder="Acerca de mi">
+            <input type="text" class="popup__input popup__input_name" required="">
+            <input type="text" class="popup__input popup__input_about" required="">
           </fieldset>
           <fieldset class="popup__content">
             <button type="submit" class="popup__button popup__button_save">
+              Guardar
+            </button>
+            <button type="button" class="popup__button popup__button_add" disabled="">
               Guardar
             </button>
           </fieldset>
         </form>
       </div>
       <header class="header">
-        <img
-          alt="Logotipo Around The U.S."
-          class="logo header__logo"
-          src="./images/logo.svg"
-        />
+        <img src="./images/logo.svg" alt="logo-page" class="header__image">
       </header>
-      <main class="content">
-        <section class="profile page__section">
-          <img class="profile__image" src="./images/me.jpg" alt="Avatar" />
-          <div class="profile__info">
-            <h1 class="profile__title">Alejandra Toro Arcila</h1>
-            <button
-              aria-label="Editar perfil"
-              class="profile__edit-button"
-              type="button"
-            ></button>
-            <p class="profile__description">Estudiante</p>
+      <main class="main">
+        <div class="main__profile">
+          <div class="main__content-image">
+            <img src="./images/me.jpg" alt="profile-image" class="main__profile-image">
           </div>
-          <button
-            aria-label="Agregar tarjeta"
-            class="profile__add-button"
-            type="button"
-          ></button>
-        </section>
-        <section class="cards page__section">
-          <ul class="cards__list">
-            <li class="card">
-              <img
-                class="card__image"
-                src="https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_yosemite.jpg"
-                alt="Valle de Yosemite"
-              />
-              <button
-                aria-label="Eliminar tarjeta"
-                class="card__delete-button"
-                type="button"
-              ></button>
-              <div class="card__description">
-                <h2 class="card__title">Valle de Yosemite</h2>
-                <button
-                  aria-label="Botón Me gusta"
-                  class="card__like-button"
-                  type="button"
-                ></button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                class="card__image"
-                src="https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lake-louise.jpg"
-                alt="Lago Louise"
-              />
-              <button
-                aria-label="Eliminar tarjeta"
-                class="card__delete-button"
-                type="button"
-              ></button>
-              <div class="card__description">
-                <h2 class="card__title">Lago Louise</h2>
-                <button
-                  aria-label="Botón Me gusta"
-                  class="card__like-button"
-                  type="button"
-                ></button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                class="card__image"
-                src="https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_bald-mountains.jpg"
-                alt="Montañas Calvas"
-              />
-              <button
-                aria-label="Eliminar tarjeta"
-                class="card__delete-button"
-                type="button"
-              ></button>
-              <div class="card__description">
-                <h2 class="card__title">Montañas Calvas</h2>
-                <button
-                  aria-label="Botón Me gusta"
-                  class="card__like-button"
-                  type="button"
-                ></button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                class="card__image"
-                src="https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_latemar.jpg"
-                alt="Latemar"
-              />
-              <button
-                aria-label="Eliminar tarjeta"
-                class="card__delete-button"
-                type="button"
-              ></button>
-              <div class="card__description">
-                <h2 class="card__title">Latemar</h2>
-                <button
-                  aria-label="Botón Me gusta"
-                  class="card__like-button"
-                  type="button"
-                ></button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                class="card__image"
-                src="https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_vanoise.jpg"
-                alt="Parque Nacional de la Vanoise"
-              />
-              <button
-                aria-label="Eliminar tarjeta"
-                class="card__delete-button"
-                type="button"
-              ></button>
-              <div class="card__description">
-                <h2 class="card__title">Parque Nacional de la Vanoise</h2>
-                <button
-                  aria-label="Botón Me gusta"
-                  class="card__like-button"
-                  type="button"
-                ></button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                class="card__image"
-                src="https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lago.jpg"
-                alt="Lago di Braies"
-              />
-              <button
-                aria-label="Eliminar tarjeta"
-                class="card__delete-button"
-                type="button"
-              ></button>
-              <div class="card__description">
-                <h2 class="card__title">Lago di Braies</h2>
-                <button
-                  aria-label="Botón Me gusta"
-                  class="card__like-button"
-                  type="button"
-                ></button>
-              </div>
-            </li>
-          </ul>
-        </section>
+          <div class="main__content-paragraph">
+            <p class="main__paragraph main__paragraph_name">Alejandra Toro Arcila</p>
+            <p class="main__paragraph main__paragraph_about">Estudiante</p>
+            <button type="button" class="main__button main__button_edit">
+              🖌
+            </button>
+          </div>
+          <button type="button" class="main__button main__button_add">
+            🞣
+          </button>
+        </div>
+        <div class="main__gallery"></div>
       </main>
-      <footer class="footer page__section">
+      <template id="main__template">
+        <div class="main__gallery-card">
+          <img class="main__gallery-image">
+          <button type="button" class="main__button main__button_delete"></button>
+          <div class="main__gallery-content">
+            <p class="main__gallery-paragraph"></p>
+            <button type="button" class="main__button main__button_like"></button>
+          </div>
+        </div>
+      </template>
+      <footer class="footer">
         <p class="footer__copyright">© 2025 Around The U.S.</p>
       </footer>
     </div>
-    <script src="./script/index.js"></script>
+    <script src="./scripts/script.js"></script>
   </body>
-</html>
+  </html>
