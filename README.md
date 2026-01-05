@@ -10,4 +10,4 @@ También permite visualizar las imágenes en mayor tamaño y marcar con “me gu
 - JavaScript
 
 ## Enlace al proyecto
-https://alejandraco0109.github.io/web_project_around_es/
+
