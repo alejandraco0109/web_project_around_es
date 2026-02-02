@@ -27,6 +27,7 @@
               required
               type="text"
             />
+            <span class="popup__error popup__input_name-error popup__error_hidden" id="name-error"></span>
             <input
               class="popup__input popup__input_about"
               name="description"
@@ -36,6 +37,7 @@
               placeholder="Acerca de mí"
               type="text"
             />
+            <span class="popup__error popup__input_about-error popup__error_hidden" id="about-error"></span>
             <button class="button popup__button_save" type="submit">Guardar</button>
           </form>
       </div>
@@ -51,7 +53,7 @@
         <form action="#" class="popup__container" id="add-card-form">
           <h3 class="popup__title">Nueva lugar</h3>
             <input
-              class="popup__input popup__input_type_title"
+              class="popup__input popup__input_title"
               name="title"
               placeholder="Título"
               minlength="2"
@@ -59,13 +61,15 @@
               required
               type="text"
             />
+            <span class="popup__error popup__input_title-error popup__error_hidden" id="title-error"></span>
             <input
-              class="popup__input popup__input_type_link"
+              class="popup__input popup__input_link"
               name="link"
               placeholder="Enlace de la imagen"
               required
               type="url"
             />
+            <span class="popup__error popup__input_link-error popup__error_hidden" id="link-error"></span>
             <button class="button popup__button_save" type="submit">Crear</button>
         </form>
           </div>

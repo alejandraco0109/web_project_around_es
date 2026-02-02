@@ -6,9 +6,12 @@
 
 .main__profile {
   display: grid;
+   grid-template-areas:
+    "title button"
+    "description description";
   grid-template-columns: 120px repeat(3, 1fr);
   grid-template-rows: 120px;
-  grid-gap: 30px;
+  grid-gap: 7px 17px;
   padding-bottom: 50px;
 }
 
@@ -84,12 +87,13 @@
 
 .main__gallery {
  display: grid;
-    grid-template-columns: repeat(auto-fit, 282px);
     justify-content: center;
     grid-gap: 20px 17px;
     list-style-type: none;
     margin: 0;
     padding: 0;
+    display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
 }
 
 .main__gallery-card {
@@ -100,6 +104,9 @@
     background-color: #fff;
     flex-direction: column;
     position: relative;
+    width: 282px;
+  max-width: 282px;
+  min-width: 282px;
 }
 
 .main__gallery-image {
@@ -119,6 +126,7 @@
   justify-content: space-between;
   max-width: 250px;
   margin: 20px auto;
+  
 }
 
 .main__gallery-paragraph {
