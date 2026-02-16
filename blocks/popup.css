@@ -137,11 +137,6 @@
   margin-bottom: 40px;
 }
 
-.popup__button_add_disabled {
-  background-color: #c4c4c4;
-  cursor: default;
-}
-
 .popup__error {
   color: #FF0000;
   font-size: 12px;

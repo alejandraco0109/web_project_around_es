@@ -1,39 +1,14 @@
-import { openPopup, closePopup } from "./utils.js";
-import { cardsInitials, cardsAdd } from "./card.js";
+import UserInfo from "./components/UserInfo.js";
+import Section from "./components/Section.js";
+import Popup from "./components/Popup.js";   
+import PopupWithForm from "./components/PopupWithForms.js";
+import PopupWithImage from "./components/PopupWithImage.js";
+import { cardsInitials, cardsAdd } from "./components/Card.js";
 import {
   setupEditFormValidation,
   setupNewCardFormValidation
-} from "./FormValidator.js";
-
-/* ================= SELECTORES ================= */
-
-const editButton = document.querySelector(".main__button_edit");
-const addButton = document.querySelector(".main__button_add");
-
-const editPopup = document.querySelector("#edit-profile-popup");
-const newCardPopup = document.querySelector("#new-card-popup");
-
-const editCloseBtn = document.querySelector(
-  "#edit-profile-popup .popup__button_close"
-);
-const addCloseBtn = document.querySelector(
-  "#new-card-popup .popup__button_close"
-);
-
-const editForm = document.querySelector("#edit-profile-form");
-const newCardForm = document.querySelector("#add-card-form");
-
-const gallery = document.querySelector(".main__gallery");
-
-const inName = document.querySelector(".main__paragraph_name");
-const inAbout = document.querySelector(".main__paragraph_about");
-
-const inpName = document.querySelector(".popup__input_name");
-const inpAbout = document.querySelector(".popup__input_about");
-
-const cardTitleInput = document.querySelector(".popup__input_title");
-const cardLinkInput = document.querySelector(".popup__input_link");
-
+} from "./components/FormValidator.js";
+import { openPopup, closePopup } from "./utils.js";
 /* ================= DATA ================= */
 
 const initialCards = [
@@ -45,59 +20,72 @@ const initialCards = [
   { name: "Lago di Braies", link: "./images/moved_lago.jpg" },
 ];
 
-/* ================= FUNCIONES ================= */
+/* ================= USER INFO ================= */
 
-function imagePopup(name, link) {
-  const popupImage = document.querySelector(".popup__image");
-  const popupText = document.querySelector(".popup__paragraph");
+const userInfo = new UserInfo({
+  nameSelector: ".main__paragraph_name",
+  aboutSelector: ".main__paragraph_about"
+});
 
-  popupImage.src = link;
-  popupImage.alt = name;
-  popupText.textContent = name;
-}
+/* ================= IMAGE POPUP ================= */
 
-/* ================= INICIALIZACIÓN ================= */
+const imagePopup = new PopupWithImage("#image-popup");
+imagePopup.setEventListeners();
 
-cardsInitials(initialCards, gallery, imagePopup);
+/* ================= SECTION ================= */
+
+const section = new Section(
+  {
+    items: initialCards,
+    renderer: (item) => {
+      cardsInitials([item], document.querySelector(".main__gallery"), (name, link) => {
+        imagePopup.open({ name, link });
+      });
+    }
+  },
+  ".main__gallery"
+);
+
+section.renderItems();
+
+/* ================= EDIT PROFILE POPUP ================= */
+
+const editPopup = new PopupWithForm("#edit-profile-popup", (data) => {
+  userInfo.setUserInfo({
+    name: data.name,
+    about: data.description
+  });
+});
+
+editPopup.setEventListeners();
+
+/* ================= NEW CARD POPUP ================= */
+
+const addPopup = new PopupWithForm("#new-card-popup", (data) => {
+  cardsAdd(
+    data.title,
+    data.link,
+    document.querySelector(".main__gallery"),
+    (name, link) => imagePopup.open({ name, link })
+  );
+});
+
+addPopup.setEventListeners();
+
+/* ================= BOTONES ================= */
+
+document
+  .querySelector(".main__button_edit")
+  .addEventListener("click", () => editPopup.open());
+
+document
+  .querySelector(".main__button_add")
+  .addEventListener("click", () => addPopup.open());
+
+/* ================= VALIDATION ================= */
 
 setupEditFormValidation();
 setupNewCardFormValidation();
-
-/* ================= EVENT LISTENERS ================= */
-
-editButton.addEventListener("click", () => {
-  inpName.value = inName.textContent;
-  inpAbout.value = inAbout.textContent;
-  openPopup(editPopup);
-});
-
-addButton.addEventListener("click", () => {
-  openPopup(newCardPopup);
-});
-
-editCloseBtn.addEventListener("click", () => closePopup(editPopup));
-addCloseBtn.addEventListener("click", () => closePopup(newCardPopup));
-
-editForm.addEventListener("submit", function (e) {
-  e.preventDefault();
-  inName.textContent = inpName.value;
-  inAbout.textContent = inpAbout.value;
-  closePopup(editPopup);
-});
-
-newCardForm.addEventListener("submit", function (e) {
-  e.preventDefault();
-
-  cardsAdd(
-    cardTitleInput.value,
-    cardLinkInput.value,
-    gallery,
-    imagePopup
-  );
-
-  closePopup(newCardPopup);
-  newCardForm.reset();
-});
 
 
 
