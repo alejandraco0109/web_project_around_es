@@ -15,8 +15,27 @@
   padding-bottom: 50px;
 }
 
+.main__profile-edit-icon {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 26px;
+  height: 26px;
+  background: url(../images/edit-icon.svg) center no-repeat;
+  background-size: contain;
+  cursor: pointer;
+}
+
+.main__content-image:hover .main__profile-edit-icon {
+  display: block;
+  background-color: rgba(0, 0, 0, 0.493);
+}
+
 .main__content-image {
   max-width: 120px;
+  position: relative;
 }
 
 .main__profile-image {

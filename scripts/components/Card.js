@@ -1,65 +1,84 @@
-export function cardsInitials(initialCards, gallery, imagePopup) {
-  initialCards.forEach((item) => {
-    const cardTemplate = document.querySelector("#main__template").content;
-    const cardElement = cardTemplate
-      .querySelector(".main__gallery-card")
+import { api } from "./api.js";
+import { deleteCardPopup } from "../index.js";
+
+export default class Card {
+  constructor(data, templateSelector, handleImageClick) {
+    this._data = data;
+    this._templateSelector = templateSelector;
+    this._handleImageClick = handleImageClick;
+  }
+
+  _getTemplate() {
+    const cardElement = document
+      .querySelector(this._templateSelector)
+      .content.querySelector(".main__gallery-card")
       .cloneNode(true);
 
-    cardElement.querySelector(".main__gallery-image").src = item.link;
-    cardElement.querySelector(".main__gallery-image").alt = item.name;
-    cardElement.querySelector(".main__gallery-paragraph").textContent =
-      item.name;
+    return cardElement;
+  }
 
-    cardElement
+  _handleLike() {
+    const likeBtn =
+      this._element.querySelector(".main__button_like");
+
+    if (likeBtn.classList.contains("main__button_like_active")) {
+      api.unlikeTheCard(this._data._id).then(() => {
+        likeBtn.classList.remove(
+          "main__button_like_active"
+        );
+      });
+    } else {
+      api.likeTheCard(this._data._id).then(() => {
+        likeBtn.classList.add(
+          "main__button_like_active"
+        );
+      });
+    }
+  }
+
+  _setEventListeners() {
+    this._element
       .querySelector(".main__button_like")
-      .addEventListener("click", function (e) {
-        e.target.classList.toggle("main__button_like_active");
-      });
+      .addEventListener("click", () =>
+        this._handleLike()
+      );
 
-    cardElement
+    this._element
       .querySelector(".main__button_delete")
-      .addEventListener("click", function () {
-        cardElement.remove();
-      });
+      .addEventListener("click", () =>
+        deleteCardPopup.open(
+          this._data._id,
+          this._element
+        )
+      );
 
-    cardElement
+    this._element
       .querySelector(".main__gallery-image")
-      .addEventListener("click", function () {
-        imagePopup(item.name, item.link);
-      });
+      .addEventListener("click", () =>
+        this._handleImageClick({
+          name: this._data.name,
+          link: this._data.link,
+        })
+      );
+  }
 
-    gallery.append(cardElement);
-  });
-}
+  generateCard() {
+    this._element = this._getTemplate();
 
-export function cardsAdd(titleValue, linkValue, gallery, imagePopup) {
-  const cardTemplate = document.querySelector("#main__template").content;
-  const cardElement = cardTemplate
-    .querySelector(".main__gallery-card")
-    .cloneNode(true);
+    const image =
+      this._element.querySelector(
+        ".main__gallery-image"
+      );
 
-  cardElement.querySelector(".main__gallery-image").src = linkValue;
-  cardElement.querySelector(".main__gallery-image").alt = titleValue;
-  cardElement.querySelector(".main__gallery-paragraph").textContent =
-    titleValue;
+    image.src = this._data.link;
+    image.alt = this._data.name;
 
-  cardElement
-    .querySelector(".main__button_like")
-    .addEventListener("click", function (e) {
-      e.target.classList.toggle("main__button_like_active");
-    });
+    this._element.querySelector(
+      ".main__gallery-paragraph"
+    ).textContent = this._data.name;
 
-  cardElement
-    .querySelector(".main__button_delete")
-    .addEventListener("click", function () {
-      cardElement.remove();
-    });
+    this._setEventListeners();
 
-  cardElement
-    .querySelector(".main__gallery-image")
-    .addEventListener("click", function () {
-      imagePopup(titleValue, linkValue);
-    });
-
-  gallery.prepend(cardElement);
+    return this._element;
+  }
 }
